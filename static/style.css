@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(120deg, #1b1b2f, #162447);
+  color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.app {
+  width: 90%;
+  max-width: 800px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+textarea {
+  width: 100%;
+  height: 140px;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  resize: none;
+  background: #222831;
+  color: #fff;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  background: #00e0ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #00c9e0;
+}
+
+.loading {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  color: #ffeb3b;
+  margin-top: 20px;
+}
+
+.spinner {
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid #ffeb3b;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#output-box {
+  margin-top: 30px;
+  background: #0f3057;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+#output-box.hidden {
+  display: none;
+}
+
+#output-box h2 {
+  margin-bottom: 10px;
+  color: #00e0ff;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+footer a {
+  color: #00e0ff;
+  text-decoration: none;
+}

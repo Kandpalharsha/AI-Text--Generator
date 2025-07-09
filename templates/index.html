@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPT-2 AI Text Generator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1><i class="fas fa-brain"></i> GPT-2 Text Generator</h1>
+      <p>Type a prompt and watch AI generate intelligent text instantly!</p>
+    </header>
+
+    <main>
+      <textarea id="prompt" placeholder="Start typing something interesting..."></textarea>
+      <button id="generate-btn" onclick="generateText()">Generate <i class="fas fa-magic"></i></button>
+      
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <span>Thinking...</span>
+      </div>
+
+      <div id="output-box" class="hidden">
+        <h2>AI Response</h2>
+        <pre id="output"></pre>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 AI Playground • Built with Flask + GPT-2</p>
+      <p><a href="https://huggingface.co/gpt2" target="_blank">GPT-2 Model</a> | <a href="#">GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    async function generateText() {
+      const prompt = document.getElementById("prompt").value;
+      const output = document.getElementById("output");
+      const loading = document.getElementById("loading");
+      const outputBox = document.getElementById("output-box");
+
+      output.textContent = "";
+      outputBox.classList.add("hidden");
+      loading.style.display = "flex";
+
+      try {
+        const response = await fetch("/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+        loading.style.display = "none";
+        output.textContent = data.generated_text;
+        outputBox.classList.remove("hidden");
+      } catch (err) {
+        loading.style.display = "none";
+        alert("An error occurred. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>
