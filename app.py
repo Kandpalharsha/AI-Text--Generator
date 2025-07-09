@@ -3,7 +3,7 @@ from transformers import pipeline, set_seed
 
 app = Flask(__name__)
 
-# Load GPT-2 model
+
 generator = pipeline('text-generation', model='gpt2')
 set_seed(42)
 
